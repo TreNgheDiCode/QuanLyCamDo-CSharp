@@ -107,6 +107,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.FromArgb(247, 255, 241);
             ClientSize = new Size(800, 450);
             Controls.Add(btnContinue);
             Controls.Add(btnClose);

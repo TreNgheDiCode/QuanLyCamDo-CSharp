@@ -62,16 +62,20 @@
             numProductFund = new NumericUpDown();
             label3 = new Label();
             label5 = new Label();
-            dpExtendDate = new DateTimePicker();
+            dpActualExtendDate = new DateTimePicker();
             label6 = new Label();
             flowLayoutPanel5 = new FlowLayoutPanel();
             numExtendPrice = new NumericUpDown();
             label7 = new Label();
-            btnPrint = new Button();
             btnClose = new Button();
             btnSave = new Button();
             label8 = new Label();
             listBox1 = new ListBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tbCustomerStatus = new TextBox();
+            dpCurrentExtendDate = new DateTimePicker();
+            label10 = new Label();
+            label9 = new Label();
             tbAddCustomer.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numProductWeight).BeginInit();
@@ -83,6 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)numProductFund).BeginInit();
             flowLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numExtendPrice).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // tbAddCustomer
@@ -145,6 +150,7 @@
             // 
             // tbCustomerId
             // 
+            tbCustomerId.BackColor = Color.FromArgb(207, 243, 194);
             tbCustomerId.Location = new Point(139, 3);
             tbCustomerId.Name = "tbCustomerId";
             tbCustomerId.Size = new Size(260, 27);
@@ -165,7 +171,9 @@
             // 
             // tbCustomerName
             // 
-            tbCustomerName.Location = new Point(139, 36);
+            tbCustomerName.Anchor = AnchorStyles.Left;
+            tbCustomerName.BackColor = Color.FromArgb(207, 243, 194);
+            tbCustomerName.Location = new Point(139, 39);
             tbCustomerName.Name = "tbCustomerName";
             tbCustomerName.Size = new Size(260, 27);
             tbCustomerName.TabIndex = 3;
@@ -193,6 +201,7 @@
             // 
             cbProductType.AutoCompleteMode = AutoCompleteMode.Suggest;
             cbProductType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbProductType.BackColor = Color.FromArgb(207, 243, 194);
             cbProductType.FormattingEnabled = true;
             cbProductType.Location = new Point(139, 192);
             cbProductType.Name = "cbProductType";
@@ -225,7 +234,9 @@
             // 
             // tbCustomerAddress
             // 
-            tbCustomerAddress.Location = new Point(139, 75);
+            tbCustomerAddress.Anchor = AnchorStyles.Left;
+            tbCustomerAddress.BackColor = Color.FromArgb(207, 243, 194);
+            tbCustomerAddress.Location = new Point(139, 78);
             tbCustomerAddress.Name = "tbCustomerAddress";
             tbCustomerAddress.Size = new Size(260, 27);
             tbCustomerAddress.TabIndex = 5;
@@ -265,13 +276,16 @@
             // 
             // tbCMND
             // 
-            tbCMND.Location = new Point(139, 114);
+            tbCMND.Anchor = AnchorStyles.Left;
+            tbCMND.BackColor = Color.FromArgb(207, 243, 194);
+            tbCMND.Location = new Point(139, 117);
             tbCMND.Name = "tbCMND";
             tbCMND.Size = new Size(260, 27);
             tbCMND.TabIndex = 7;
             // 
             // tbProductName
             // 
+            tbProductName.BackColor = Color.FromArgb(207, 243, 194);
             tbProductName.Location = new Point(564, 3);
             tbProductName.Name = "tbProductName";
             tbProductName.Size = new Size(260, 27);
@@ -302,6 +316,7 @@
             // numProductWeight
             // 
             numProductWeight.Anchor = AnchorStyles.Left;
+            numProductWeight.BackColor = Color.FromArgb(207, 243, 194);
             numProductWeight.DecimalPlaces = 1;
             numProductWeight.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numProductWeight.Location = new Point(3, 3);
@@ -344,6 +359,7 @@
             // numProductPrice
             // 
             numProductPrice.Anchor = AnchorStyles.Left;
+            numProductPrice.BackColor = Color.FromArgb(207, 243, 194);
             numProductPrice.Increment = new decimal(new int[] { 100000, 0, 0, 0 });
             numProductPrice.Location = new Point(3, 3);
             numProductPrice.Maximum = new decimal(new int[] { 1410065408, 2, 0, 0 });
@@ -399,6 +415,7 @@
             // 
             // numProductRate
             // 
+            numProductRate.BackColor = Color.FromArgb(207, 243, 194);
             numProductRate.Location = new Point(3, 3);
             numProductRate.Name = "numProductRate";
             numProductRate.Size = new Size(257, 27);
@@ -439,6 +456,7 @@
             // numProductFund
             // 
             numProductFund.Anchor = AnchorStyles.Left;
+            numProductFund.BackColor = Color.FromArgb(207, 243, 194);
             numProductFund.Increment = new decimal(new int[] { 100000, 0, 0, 0 });
             numProductFund.Location = new Point(3, 3);
             numProductFund.Maximum = new decimal(new int[] { 1410065408, 2, 0, 0 });
@@ -460,29 +478,31 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
             label5.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(5, 281);
+            label5.Location = new Point(3, 9);
             label5.Name = "label5";
             label5.Size = new Size(131, 21);
             label5.TabIndex = 29;
             label5.Text = "Ngày gia hạn*";
             // 
-            // dpExtendDate
+            // dpActualExtendDate
             // 
-            dpExtendDate.Anchor = AnchorStyles.Left;
-            dpExtendDate.Location = new Point(151, 277);
-            dpExtendDate.Name = "dpExtendDate";
-            dpExtendDate.Size = new Size(260, 27);
-            dpExtendDate.TabIndex = 27;
+            dpActualExtendDate.Anchor = AnchorStyles.Left;
+            dpActualExtendDate.Location = new Point(155, 6);
+            dpActualExtendDate.Name = "dpActualExtendDate";
+            dpActualExtendDate.Size = new Size(260, 27);
+            dpActualExtendDate.TabIndex = 27;
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Left;
             label6.AutoSize = true;
             label6.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(5, 314);
+            label6.Location = new Point(3, 48);
             label6.Name = "label6";
             label6.Size = new Size(146, 21);
             label6.TabIndex = 30;
@@ -494,9 +514,9 @@
             flowLayoutPanel5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel5.Controls.Add(numExtendPrice);
             flowLayoutPanel5.Controls.Add(label7);
-            flowLayoutPanel5.Location = new Point(148, 310);
+            flowLayoutPanel5.Location = new Point(155, 42);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new Size(313, 33);
+            flowLayoutPanel5.Size = new Size(263, 33);
             flowLayoutPanel5.TabIndex = 31;
             // 
             // numExtendPrice
@@ -515,23 +535,11 @@
             // 
             label7.Anchor = AnchorStyles.Left;
             label7.AutoSize = true;
-            label7.Location = new Point(266, 6);
+            label7.Location = new Point(3, 33);
             label7.Name = "label7";
             label7.Size = new Size(44, 20);
             label7.TabIndex = 1;
             label7.Text = "đồng";
-            // 
-            // btnPrint
-            // 
-            btnPrint.BackColor = Color.White;
-            btnPrint.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrint.ForeColor = Color.Black;
-            btnPrint.Location = new Point(268, 362);
-            btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(140, 40);
-            btnPrint.TabIndex = 31;
-            btnPrint.Text = "In BN (F3)";
-            btnPrint.UseVisualStyleBackColor = false;
             // 
             // btnClose
             // 
@@ -539,7 +547,7 @@
             btnClose.BackColor = Color.White;
             btnClose.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.Black;
-            btnClose.Location = new Point(560, 362);
+            btnClose.Location = new Point(448, 360);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(140, 40);
             btnClose.TabIndex = 29;
@@ -552,7 +560,7 @@
             btnSave.BackColor = Color.White;
             btnSave.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(414, 362);
+            btnSave.Location = new Point(302, 360);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(140, 40);
             btnSave.TabIndex = 30;
@@ -578,21 +586,88 @@
             listBox1.Size = new Size(742, 164);
             listBox1.TabIndex = 33;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.ColumnCount = 5;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(tbCustomerStatus, 4, 1);
+            tableLayoutPanel1.Controls.Add(dpCurrentExtendDate, 4, 0);
+            tableLayoutPanel1.Controls.Add(label10, 3, 1);
+            tableLayoutPanel1.Controls.Add(label5, 0, 0);
+            tableLayoutPanel1.Controls.Add(label6, 0, 1);
+            tableLayoutPanel1.Controls.Add(dpActualExtendDate, 1, 0);
+            tableLayoutPanel1.Controls.Add(flowLayoutPanel5, 1, 1);
+            tableLayoutPanel1.Controls.Add(label9, 3, 0);
+            tableLayoutPanel1.Location = new Point(5, 259);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(899, 78);
+            tableLayoutPanel1.TabIndex = 34;
+            // 
+            // tbCustomerStatus
+            // 
+            tbCustomerStatus.Anchor = AnchorStyles.Left;
+            tbCustomerStatus.BackColor = Color.FromArgb(207, 243, 194);
+            tbCustomerStatus.Enabled = false;
+            tbCustomerStatus.Location = new Point(586, 45);
+            tbCustomerStatus.Name = "tbCustomerStatus";
+            tbCustomerStatus.Size = new Size(260, 27);
+            tbCustomerStatus.TabIndex = 35;
+            // 
+            // dpCurrentExtendDate
+            // 
+            dpCurrentExtendDate.Anchor = AnchorStyles.Left;
+            dpCurrentExtendDate.Enabled = false;
+            dpCurrentExtendDate.Location = new Point(586, 6);
+            dpCurrentExtendDate.Name = "dpCurrentExtendDate";
+            dpCurrentExtendDate.Size = new Size(260, 27);
+            dpCurrentExtendDate.TabIndex = 35;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Left;
+            label10.AutoSize = true;
+            label10.Enabled = false;
+            label10.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(454, 48);
+            label10.Name = "label10";
+            label10.Size = new Size(97, 21);
+            label10.TabIndex = 36;
+            label10.Text = "Trạng thái";
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Left;
+            label9.AutoSize = true;
+            label9.Enabled = false;
+            label9.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(454, 9);
+            label9.Name = "label9";
+            label9.Size = new Size(126, 21);
+            label9.TabIndex = 35;
+            label9.Text = "Ngày GD GH*";
+            // 
             // CustomerExtendForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 255, 187);
             ClientSize = new Size(913, 628);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(listBox1);
             Controls.Add(label8);
-            Controls.Add(flowLayoutPanel5);
-            Controls.Add(label6);
-            Controls.Add(btnPrint);
             Controls.Add(btnClose);
-            Controls.Add(dpExtendDate);
             Controls.Add(btnSave);
-            Controls.Add(label5);
             Controls.Add(tbAddCustomer);
             Name = "CustomerExtendForm";
             Text = "Khách hàng gia hạn";
@@ -613,6 +688,8 @@
             flowLayoutPanel5.ResumeLayout(false);
             flowLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numExtendPrice).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -653,15 +730,19 @@
         private Label label4;
         private Label lbProductRate;
         private Label label5;
-        private DateTimePicker dpExtendDate;
+        private DateTimePicker dpActualExtendDate;
         private Label label6;
         private FlowLayoutPanel flowLayoutPanel5;
         private NumericUpDown numExtendPrice;
         private Label label7;
-        private Button btnPrint;
         private Button btnClose;
         private Button btnSave;
         private Label label8;
         private ListBox listBox1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label9;
+        private Label label10;
+        private DateTimePicker dpCurrentExtendDate;
+        private TextBox tbCustomerStatus;
     }
 }

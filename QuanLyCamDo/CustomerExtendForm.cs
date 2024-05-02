@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace QuanLyCamDo
 {
@@ -109,6 +101,20 @@ namespace QuanLyCamDo
             }
         }
 
+        public int CustomerStatus
+        {
+            set
+            {
+                tbCustomerStatus.Text = value switch
+                {
+                    0 => "Đang cầm",
+                    1 => "Đã chuộc",
+                    2 => "Đã quá hạn",
+                    _ => "Không xác định"
+                };
+            }
+        }
+
         public CustomerExtendForm()
         {
             InitializeComponent();
@@ -124,8 +130,11 @@ namespace QuanLyCamDo
             dpCreatedAt.Format = DateTimePickerFormat.Custom;
             dpCreatedAt.CustomFormat = "dd/MM/yyyy";
 
-            dpExtendDate.Format = DateTimePickerFormat.Custom;
-            dpExtendDate.CustomFormat = "dd/MM/yyyy";
+            dpActualExtendDate.Format = DateTimePickerFormat.Custom;
+            dpActualExtendDate.CustomFormat = "dd/MM/yyyy";
+
+            dpCurrentExtendDate.Format = DateTimePickerFormat.Custom;
+            dpCurrentExtendDate.CustomFormat = "dd/MM/yyyy";
         }
 
         private void DisableFields()
@@ -142,7 +151,6 @@ namespace QuanLyCamDo
             numProductRate.Enabled = false;
             numProductPrice.Enabled = false;
             numProductWeight.Enabled = false;
-            tbNote.Enabled = false;
         }
 
         private void ThemVaoDanhSachLoaiTaiSan()

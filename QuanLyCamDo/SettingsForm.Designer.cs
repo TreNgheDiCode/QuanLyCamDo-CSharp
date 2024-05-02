@@ -38,16 +38,17 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(120, 20);
+            label1.Size = new Size(182, 21);
             label1.TabIndex = 0;
-            label1.Text = "Chọn đường dẫn";
+            label1.Text = "Đưởng dẫn thư mục";
             // 
             // tbLocation
             // 
-            tbLocation.Location = new Point(138, 6);
+            tbLocation.Location = new Point(200, 7);
             tbLocation.Name = "tbLocation";
             tbLocation.Size = new Size(394, 27);
             tbLocation.TabIndex = 1;
@@ -58,13 +59,14 @@
             // 
             // btnChooseFile
             // 
+            btnChooseFile.BackColor = Color.White;
             btnChooseFile.FlatStyle = FlatStyle.Flat;
-            btnChooseFile.Location = new Point(538, 6);
+            btnChooseFile.Location = new Point(600, 6);
             btnChooseFile.Name = "btnChooseFile";
             btnChooseFile.Size = new Size(94, 29);
             btnChooseFile.TabIndex = 2;
             btnChooseFile.Text = "Chọn...";
-            btnChooseFile.UseVisualStyleBackColor = true;
+            btnChooseFile.UseVisualStyleBackColor = false;
             btnChooseFile.Click += btnChooseFile_Click;
             // 
             // btnClose
@@ -73,7 +75,7 @@
             btnClose.BackColor = Color.White;
             btnClose.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.Black;
-            btnClose.Location = new Point(492, 41);
+            btnClose.Location = new Point(554, 41);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(140, 40);
             btnClose.TabIndex = 3;
@@ -87,14 +89,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(247, 255, 241);
             ClientSize = new Size(800, 450);
             Controls.Add(btnClose);
             Controls.Add(btnChooseFile);
             Controls.Add(tbLocation);
             Controls.Add(label1);
             Name = "SettingsForm";
-            Text = "Cài đặt";
+            Text = "Đường dẫn";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -139,6 +139,8 @@
             // 
             // tbCustomerId
             // 
+            tbCustomerId.BackColor = Color.FromArgb(207, 243, 194);
+            tbCustomerId.Enabled = false;
             tbCustomerId.Location = new Point(139, 3);
             tbCustomerId.Name = "tbCustomerId";
             tbCustomerId.Size = new Size(260, 27);
@@ -172,9 +174,9 @@
             lbCustomerAddress.ForeColor = Color.Black;
             lbCustomerAddress.Location = new Point(3, 81);
             lbCustomerAddress.Name = "lbCustomerAddress";
-            lbCustomerAddress.Size = new Size(76, 21);
+            lbCustomerAddress.Size = new Size(67, 21);
             lbCustomerAddress.TabIndex = 4;
-            lbCustomerAddress.Text = "Địa chỉ*";
+            lbCustomerAddress.Text = "Địa chỉ";
             // 
             // tbCustomerAddress
             // 
@@ -218,6 +220,8 @@
             // dpCreatedAt
             // 
             dpCreatedAt.Anchor = AnchorStyles.Left;
+            dpCreatedAt.CalendarMonthBackground = Color.WhiteSmoke;
+            dpCreatedAt.Enabled = false;
             dpCreatedAt.Location = new Point(139, 156);
             dpCreatedAt.Name = "dpCreatedAt";
             dpCreatedAt.Size = new Size(260, 27);
@@ -416,6 +420,7 @@
             // 
             // btnAddProductType
             // 
+            btnAddProductType.BackColor = Color.FromArgb(202, 223, 180);
             btnAddProductType.FlatStyle = FlatStyle.Flat;
             btnAddProductType.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddProductType.ForeColor = Color.FromArgb(36, 0, 255);
@@ -424,7 +429,7 @@
             btnAddProductType.Size = new Size(40, 28);
             btnAddProductType.TabIndex = 1;
             btnAddProductType.Text = "+";
-            btnAddProductType.UseVisualStyleBackColor = true;
+            btnAddProductType.UseVisualStyleBackColor = false;
             btnAddProductType.Click += btnAddProductType_Click;
             // 
             // tbAddCustomer
@@ -572,7 +577,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.FromArgb(217, 255, 187);
+            BackColor = Color.FromArgb(141, 200, 94);
             ClientSize = new Size(921, 762);
             Controls.Add(listCustomers);
             Controls.Add(label5);

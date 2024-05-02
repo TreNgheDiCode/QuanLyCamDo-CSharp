@@ -40,17 +40,17 @@
             // 
             lbProductType.Anchor = AnchorStyles.Left;
             lbProductType.AutoSize = true;
-            lbProductType.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbProductType.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbProductType.ForeColor = Color.Black;
             lbProductType.Location = new Point(3, 6);
             lbProductType.Name = "lbProductType";
-            lbProductType.Size = new Size(137, 21);
+            lbProductType.Size = new Size(139, 21);
             lbProductType.TabIndex = 0;
             lbProductType.Text = "Tên loại tài sản";
             // 
             // tbProductType
             // 
-            tbProductType.Location = new Point(146, 3);
+            tbProductType.Location = new Point(148, 3);
             tbProductType.Name = "tbProductType";
             tbProductType.Size = new Size(225, 27);
             tbProductType.TabIndex = 1;
@@ -63,7 +63,7 @@
             flowLayoutPanel1.Controls.Add(tbProductType);
             flowLayoutPanel1.Location = new Point(12, 12);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(374, 33);
+            flowLayoutPanel1.Size = new Size(376, 33);
             flowLayoutPanel1.TabIndex = 2;
             // 
             // btnClose
@@ -100,7 +100,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(247, 255, 241);
             ClientSize = new Size(800, 450);
             Controls.Add(btnCreate);
             Controls.Add(btnClose);

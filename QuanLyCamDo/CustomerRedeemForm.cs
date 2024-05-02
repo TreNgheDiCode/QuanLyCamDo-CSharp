@@ -109,7 +109,7 @@ namespace QuanLyCamDo
             }
         }
 
-        public short CustomerStatus
+        public int CustomerStatus
         {
             set
             {
@@ -154,7 +154,6 @@ namespace QuanLyCamDo
             numProductRate.Enabled = false;
             numProductPrice.Enabled = false;
             numProductWeight.Enabled = false;
-            tbNote.Enabled = false;
             tbCustomerStatus.Enabled = false;
         }
 

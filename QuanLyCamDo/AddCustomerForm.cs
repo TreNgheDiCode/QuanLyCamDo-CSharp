@@ -1,16 +1,19 @@
-﻿using System.Data;
+﻿
+using System.Data;
 using System.Data.OleDb;
-using static System.Windows.Forms.AxHost;
-using System.Windows.Forms;
 using System.Globalization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Drawing.Printing;
+using Word = Microsoft.Office.Interop.Word;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace QuanLyCamDo
 {
     public partial class AddCustomerForm : Form
     {
         private readonly DataTable dataTable = new();
+        private readonly Utility utility = new();
+
         public AddCustomerForm()
         {
             InitializeComponent();
@@ -19,7 +22,6 @@ namespace QuanLyCamDo
             ControlBox = false;
             ThemVaoDanhSachLoaiTaiSan();
             AddProductTypeForm.FormClosedEvent += CapNhatDanhSachLoaiTaiSan;
-            tbCustomerId.Enabled = false;
             dpCreatedAt.Format = DateTimePickerFormat.Custom;
             dpCreatedAt.CustomFormat = "dd/MM/yyyy";
             CultureInfo.CurrentCulture = new CultureInfo("vi-VN", false);
@@ -66,6 +68,18 @@ namespace QuanLyCamDo
             if ((cbProductType.Text.ToLower().Trim().Contains("vàng") || cbProductType.Text.ToLower().Trim().Contains("vang")) && numProductWeight.Value == 0)
             {
                 MessageBox.Show("Vui lòng nhập số chỉ cho loại tài sản liên quan đến vàng", "Thông tin không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (numProductFund.Value == 0)
+            {
+                MessageBox.Show("Vui lòng nhập tiền vốn lớn hơn 0", "Thông tin không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (numProductRate.Value == 0)
+            {
+                MessageBox.Show("Vui lòng nhập lãi suất lớn hơn 0", "Thông tin không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -290,7 +304,78 @@ namespace QuanLyCamDo
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            printDialog.ShowDialog();
+            // Path to the Word document
+            string docPath = @"D:\\LamViec\\QuanLyCamDo\\mailmerge-test.docx";
+
+            // Create a new Word application
+            var wordApp = new Word.Application();
+
+            // Open the Word document
+            var wordDoc = wordApp.Documents.Open(docPath);
+
+            // Check if the file is read-only
+            if (new FileInfo(docPath).IsReadOnly)
+            {
+                // Change the file's read-only status
+                File.SetAttributes(docPath, File.GetAttributes(docPath) & ~FileAttributes.ReadOnly);
+            }
+
+            // Loop through each row in the DataGridView
+            for (int i = 0; i < listCustomers.Rows.Count - 1; i++)
+            {
+                DataGridViewRow row = listCustomers.Rows[i];
+
+                // Get the values from the DataGridView row
+                string customerId = row.Cells["SoBienNhan"].Value.ToString()!;
+                string productRate = row.Cells["LaiSuat"].Value.ToString()! + " %/Tháng";
+                string customerName = row.Cells["TenKhachHang"].Value.ToString()!;
+                string customerAddress = row.Cells["DiaChi"].Value.ToString()!;
+                string productTypeName = GetProductTypeName((int)row.Cells["LoaiTaiSan"].Value)!;
+                string productWeight = row.Cells["TrongLuongVang"].Value.ToString()! + " chỉ";
+                MessageBox.Show(string.Format("{0:0,0 đồng}", row.Cells["TriGia"].Value.ToString()!));
+                string productPrice = string.Format("{0:0,0 đồng}", row.Cells["TriGia"].Value.ToString()!);
+                string productFund = string.Format("{0:0,0 đồng}" + " (" + utility.ConvertPriceToText((double)row.Cells["TienVon"].Value) + ")", row.Cells["TienVon"].Value.ToString()!);
+
+                // Replace placeholders in the Word document with the values from the DataGridView
+                ReplaceWordPlaceholder(wordDoc, "SoBienNhan1", customerId);
+                ReplaceWordPlaceholder(wordDoc, "SoBienNhan2", customerId);
+                ReplaceWordPlaceholder(wordDoc, "LaiSuat1", productRate);
+                ReplaceWordPlaceholder(wordDoc, "LaiSuat2", productRate);
+                ReplaceWordPlaceholder(wordDoc, "TenKhachHang1", customerName);
+                ReplaceWordPlaceholder(wordDoc, "TenKhachHang2", customerName);
+                ReplaceWordPlaceholder(wordDoc, "DiaChi1", customerAddress);
+                ReplaceWordPlaceholder(wordDoc, "DiaChi2", customerAddress);
+                ReplaceWordPlaceholder(wordDoc, "LoaiTaiSan1", productRate);
+                ReplaceWordPlaceholder(wordDoc, "LoaiTaiSan2", productRate);
+                ReplaceWordPlaceholder(wordDoc, "TrongLuongVang1", productWeight);
+                ReplaceWordPlaceholder(wordDoc, "TrongLuongVang2", productWeight);
+                ReplaceWordPlaceholder(wordDoc, "TriGia1", productPrice);
+                ReplaceWordPlaceholder(wordDoc, "TriGia2", productPrice);
+                ReplaceWordPlaceholder(wordDoc, "TienVon1", productFund);
+                ReplaceWordPlaceholder(wordDoc, "TienVon2", productFund);
+            }
+
+            // Save and close the Word document
+            wordDoc.Save();
+            wordDoc.Close();
+
+            // Quit the Word application
+            wordApp.Quit();
+        }
+
+        private void ReplaceWordPlaceholder(Word.Document doc, string placeholder, string newValue)
+        {
+            // Find the placeholder in the Word document
+            if (doc.Bookmarks.Exists(placeholder))
+            {
+                Word.Bookmark bookmark = doc.Bookmarks[placeholder];
+                Word.Range range = bookmark.Range;
+                range.Text = newValue;
+            }
+            else
+            {
+                MessageBox.Show($"Bookmark '{placeholder}' does not exist in the document.");
+            }
         }
 
         private string GetProductTypeName(int id)
@@ -331,112 +416,9 @@ namespace QuanLyCamDo
             }
         }
 
-        string[] words =
-            [
-                "không",
-                "một",
-                "hai",
-                "ba",
-                "bốn",
-                "năm",
-                "sáu",
-                "bảy",
-                "tám",
-                "chín",
-                "mười",
-                "mười một",
-                "mười hai",
-                "mười ba",
-                "mười bốn",
-                "mười lăm",
-                "mười sáu",
-                "mười bảy",
-                "mười tám",
-                "mười chín"
-            ];
-
-        string[] units = [
-            "",
-            "nghìn",
-            "triệu",
-            "tỷ"
-        ];
-
-        private string ConvertPriceToText(double number)
-        {
-            if (number <= 0)
-            {
-                return "Không đồng";
-            }
-
-            int integralPart = (int)Math.Floor(number);
-
-            string text = ConvertIntergerPartToText(integralPart);
-
-            return text + " đồng";
-        }
-
-        private string ConvertIntergerPartToText(int number)
-        {
-            string text = "";
-            int unitIndex = 0;
-
-            while (number > 0)
-            {
-                int threeDigitGroup = number % 1000;
-                text = ConvertThreeDigitGroupToText(threeDigitGroup) + " " + units[unitIndex] + " " + text;
-                number /= 1000;
-                unitIndex++;
-            }
-
-            return text.Trim();
-        }
-
-        private string ConvertThreeDigitGroupToText(int number)
-        {
-            string text = "";
-
-            int hundred = number / 100;
-            number %= 100;
-
-            if (hundred > 0)
-            {
-                text = words[hundred] + " trăm ";
-            }
-
-            if (number > 0)
-            {
-                if (hundred > 0 && number < 10)
-                {
-                    text += "lẻ ";
-                }
-                text += ConvertTwoDigitNumberToText(number);
-            }
-
-            return text.Trim();
-        }
-
-        private string ConvertTwoDigitNumberToText(int number)
-        {
-            if (number == 0)
-            {
-                return "";
-            }
-
-            int ten = number / 10;
-            int unit = number % 10;
-
-            if (ten == 1)
-            {
-                return words[unit + 10];
-            }
-            else
-            {
-                return words[ten] + " mươi " + words[unit];
-            }
-        }
-
         int i = 0;
+
+        
 
         private void print_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -551,7 +533,7 @@ namespace QuanLyCamDo
                 offset += leading + defaultFont.Height;
 
                 // In Số tiền cầm
-                string covertPriceToText = ConvertPriceToText((double)cells[9].Value);
+                string covertPriceToText = utility.ConvertPriceToText((double)cells[9].Value);
                 layout = new(new PointF(lMargin, startY + offset), layoutSize);
                 e.Graphics.DrawString(labelFund, defaultFont, Brushes.Black, layout, textLeftFormat);
                 layoutSize = new(printableArea.Width, italicFont.Height);

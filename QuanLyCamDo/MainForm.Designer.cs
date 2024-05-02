@@ -43,9 +43,9 @@
             btnLiquidation = new Button();
             btnStatistic = new Button();
             btnAudit = new Button();
-            pictureBox1 = new PictureBox();
             btnClose = new Button();
             btnSetting = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -53,22 +53,24 @@
             // 
             lbSubCompany.Anchor = AnchorStyles.Top;
             lbSubCompany.AutoSize = true;
+            lbSubCompany.BackColor = Color.Transparent;
             lbSubCompany.Font = new Font("Inter", 14.999999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbSubCompany.ForeColor = Color.FromArgb(0, 26, 255);
-            lbSubCompany.Location = new Point(316, 23);
+            lbSubCompany.ForeColor = Color.Black;
+            lbSubCompany.Location = new Point(345, 23);
             lbSubCompany.Name = "lbSubCompany";
-            lbSubCompany.Size = new Size(310, 30);
+            lbSubCompany.Size = new Size(230, 30);
             lbSubCompany.TabIndex = 0;
-            lbSubCompany.Text = "CTY TNHH SX - TM - DV";
+            lbSubCompany.Text = "DỊCH VỤ CẦM ĐỒ";
             lbSubCompany.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lbCompanyName
             // 
             lbCompanyName.Anchor = AnchorStyles.Top;
             lbCompanyName.AutoSize = true;
+            lbCompanyName.BackColor = Color.Transparent;
             lbCompanyName.Font = new Font("Inter", 22.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbCompanyName.ForeColor = Color.Red;
-            lbCompanyName.Location = new Point(320, 58);
+            lbCompanyName.Location = new Point(349, 58);
             lbCompanyName.Name = "lbCompanyName";
             lbCompanyName.Size = new Size(316, 47);
             lbCompanyName.TabIndex = 1;
@@ -79,9 +81,10 @@
             // 
             lbApp.Anchor = AnchorStyles.Top;
             lbApp.AutoSize = true;
+            lbApp.BackColor = Color.Transparent;
             lbApp.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbApp.ForeColor = Color.FromArgb(0, 26, 255);
-            lbApp.Location = new Point(392, 142);
+            lbApp.ForeColor = Color.Black;
+            lbApp.Location = new Point(421, 142);
             lbApp.Name = "lbApp";
             lbApp.Size = new Size(108, 21);
             lbApp.TabIndex = 2;
@@ -91,9 +94,11 @@
             // 
             lbTitle.Anchor = AnchorStyles.Top;
             lbTitle.AutoSize = true;
+            lbTitle.BackColor = Color.Transparent;
             lbTitle.Font = new Font("Inter ExtraBold", 22.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbTitle.ForeColor = Color.FromArgb(5, 0, 255);
-            lbTitle.Location = new Point(309, 171);
+            lbTitle.ForeColor = Color.Red;
+            lbTitle.Location = new Point(313, 171);
+            lbTitle.Margin = new Padding(0);
             lbTitle.Name = "lbTitle";
             lbTitle.Size = new Size(362, 47);
             lbTitle.TabIndex = 3;
@@ -103,7 +108,7 @@
             // 
             btnAddCustomer.BackColor = Color.White;
             btnAddCustomer.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddCustomer.Location = new Point(20, 267);
+            btnAddCustomer.Location = new Point(44, 291);
             btnAddCustomer.Name = "btnAddCustomer";
             btnAddCustomer.Size = new Size(180, 50);
             btnAddCustomer.TabIndex = 4;
@@ -114,14 +119,15 @@
             // lbCurrentTime
             // 
             lbCurrentTime.Anchor = AnchorStyles.Top;
-            lbCurrentTime.AutoSize = true;
+            lbCurrentTime.BackColor = Color.White;
             lbCurrentTime.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbCurrentTime.ForeColor = Color.Red;
-            lbCurrentTime.Location = new Point(70, 228);
+            lbCurrentTime.ForeColor = Color.Black;
+            lbCurrentTime.Location = new Point(-9, 228);
             lbCurrentTime.Name = "lbCurrentTime";
-            lbCurrentTime.Size = new Size(121, 21);
+            lbCurrentTime.Size = new Size(878, 37);
             lbCurrentTime.TabIndex = 5;
             lbCurrentTime.Text = "Current time";
+            lbCurrentTime.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // timer1
             // 
@@ -131,7 +137,7 @@
             // 
             btnExtendCustomer.BackColor = Color.White;
             btnExtendCustomer.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnExtendCustomer.Location = new Point(216, 267);
+            btnExtendCustomer.Location = new Point(242, 291);
             btnExtendCustomer.Name = "btnExtendCustomer";
             btnExtendCustomer.Size = new Size(180, 50);
             btnExtendCustomer.TabIndex = 6;
@@ -143,7 +149,7 @@
             // 
             btnRedeemCustomer.BackColor = Color.White;
             btnRedeemCustomer.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRedeemCustomer.Location = new Point(412, 267);
+            btnRedeemCustomer.Location = new Point(440, 291);
             btnRedeemCustomer.Name = "btnRedeemCustomer";
             btnRedeemCustomer.Size = new Size(180, 50);
             btnRedeemCustomer.TabIndex = 7;
@@ -155,7 +161,7 @@
             // 
             btnSearchCustomer.BackColor = Color.White;
             btnSearchCustomer.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSearchCustomer.Location = new Point(608, 267);
+            btnSearchCustomer.Location = new Point(638, 291);
             btnSearchCustomer.Name = "btnSearchCustomer";
             btnSearchCustomer.Size = new Size(180, 50);
             btnSearchCustomer.TabIndex = 8;
@@ -167,7 +173,7 @@
             // 
             btnLiquidation.BackColor = Color.White;
             btnLiquidation.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnLiquidation.Location = new Point(20, 342);
+            btnLiquidation.Location = new Point(44, 363);
             btnLiquidation.Name = "btnLiquidation";
             btnLiquidation.Size = new Size(180, 50);
             btnLiquidation.TabIndex = 9;
@@ -178,7 +184,7 @@
             // 
             btnStatistic.BackColor = Color.White;
             btnStatistic.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnStatistic.Location = new Point(216, 342);
+            btnStatistic.Location = new Point(244, 363);
             btnStatistic.Name = "btnStatistic";
             btnStatistic.Size = new Size(180, 50);
             btnStatistic.TabIndex = 10;
@@ -189,28 +195,19 @@
             // 
             btnAudit.BackColor = Color.White;
             btnAudit.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAudit.Location = new Point(412, 342);
+            btnAudit.Location = new Point(444, 363);
             btnAudit.Name = "btnAudit";
             btnAudit.Size = new Size(180, 50);
             btnAudit.TabIndex = 11;
             btnAudit.Text = "Kiểm toán";
             btnAudit.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(71, 23);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(83, 71);
-            pictureBox1.TabIndex = 13;
-            pictureBox1.TabStop = false;
-            // 
             // btnClose
             // 
             btnClose.BackColor = Color.White;
             btnClose.BackgroundImage = (Image)resources.GetObject("btnClose.BackgroundImage");
             btnClose.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnClose.Location = new Point(20, 409);
+            btnClose.Location = new Point(44, 429);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(40, 40);
             btnClose.TabIndex = 14;
@@ -219,9 +216,9 @@
             // 
             // btnSetting
             // 
-            btnSetting.BackColor = Color.White;
-            btnSetting.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSetting.Location = new Point(648, 12);
+            btnSetting.BackColor = Color.FromArgb(214, 230, 193);
+            btnSetting.Font = new Font("Inter Medium", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSetting.Location = new Point(707, 12);
             btnSetting.Name = "btnSetting";
             btnSetting.Size = new Size(140, 40);
             btnSetting.TabIndex = 15;
@@ -229,15 +226,27 @@
             btnSetting.UseVisualStyleBackColor = false;
             btnSetting.Click += btnSetting_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(20, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(124, 107);
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 255, 187);
-            ClientSize = new Size(800, 471);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(859, 481);
+            Controls.Add(pictureBox1);
             Controls.Add(btnSetting);
             Controls.Add(btnClose);
-            Controls.Add(pictureBox1);
             Controls.Add(btnAudit);
             Controls.Add(btnStatistic);
             Controls.Add(btnLiquidation);
@@ -273,8 +282,8 @@
         private Button btnLiquidation;
         private Button btnStatistic;
         private Button btnAudit;
-        private PictureBox pictureBox1;
         private Button btnClose;
         private Button btnSetting;
+        private PictureBox pictureBox1;
     }
 }

@@ -56,7 +56,7 @@ namespace QuanLyCamDo
                 while (reader.Read())
                 {
                     if (reader.GetString(0) != "" && formType == "extend")
-                    {   
+                    {
                         CustomerExtendForm customerExtendForm = new()
                         {
                             CustomerId = reader.GetString(0),
@@ -71,6 +71,7 @@ namespace QuanLyCamDo
                             ProductFund = reader.GetDouble(9),
                             ProductRate = reader.GetDouble(10),
                             Note = reader.GetString(11),
+                            CustomerStatus = reader.GetInt32(15),
                         };
                         Close();
                         customerExtendForm.ShowDialog();
@@ -91,6 +92,7 @@ namespace QuanLyCamDo
                             ProductFund = reader.GetDouble(9),
                             ProductRate = reader.GetDouble(10),
                             Note = reader.GetString(11),
+                            CustomerStatus = reader.GetInt32(12),
                         };
                         Close();
                         customerRedeemForm.ShowDialog();
