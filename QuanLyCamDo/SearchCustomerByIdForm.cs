@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data.OleDb;
 
 namespace QuanLyCamDo
 {
@@ -53,25 +44,13 @@ namespace QuanLyCamDo
 
                 OleDbDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read() && reader.GetValue(0) != DBNull.Value)
                 {
                     if (reader.GetString(0) != "" && formType == "extend")
                     {
                         CustomerExtendForm customerExtendForm = new()
                         {
                             CustomerId = reader.GetString(0),
-                            CustomerName = reader.GetString(1),
-                            CustomerAddress = reader.GetString(2),
-                            CMND = reader.GetString(3),
-                            CreatedAt = reader.GetDateTime(4),
-                            ProductType = reader.GetInt32(5),
-                            ProductName = reader.GetString(6),
-                            ProductWeight = reader.GetDouble(7),
-                            ProductPrice = reader.GetDouble(8),
-                            ProductFund = reader.GetDouble(9),
-                            ProductRate = reader.GetDouble(10),
-                            Note = reader.GetString(11),
-                            CustomerStatus = reader.GetInt32(15),
                         };
                         Close();
                         customerExtendForm.ShowDialog();
@@ -81,25 +60,15 @@ namespace QuanLyCamDo
                         CustomerRedeemForm customerRedeemForm = new()
                         {
                             CustomerId = reader.GetString(0),
-                            CustomerName = reader.GetString(1),
-                            CustomerAddress = reader.GetString(2),
-                            CMND = reader.GetString(3),
-                            CreatedAt = reader.GetDateTime(4),
-                            ProductType = reader.GetInt32(5),
-                            ProductName = reader.GetString(6),
-                            ProductWeight = reader.GetDouble(7),
-                            ProductPrice = reader.GetDouble(8),
-                            ProductFund = reader.GetDouble(9),
-                            ProductRate = reader.GetDouble(10),
-                            Note = reader.GetString(11),
-                            CustomerStatus = reader.GetInt32(12),
                         };
                         Close();
                         customerRedeemForm.ShowDialog();
                         return;
                     }
+                } else
+                {
+                    MessageBox.Show("Không tìm thấy biên nhận");
                 }
-                MessageBox.Show("Không tìm thấy biên nhận");
             } 
             catch (Exception ex)
             {

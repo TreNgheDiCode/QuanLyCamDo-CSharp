@@ -13,113 +13,95 @@ namespace QuanLyCamDo
 {
     public partial class CustomerRedeemForm : Form
     {
+        private short daysDiff = 0;
+        private short monthsDiff = 0;
+        private bool isFirst = false, isSecond = false, isThird = false;
+        private DateTime first, second;
+
         public string CustomerId
         {
             set
             {
                 tbCustomerId.Text = value;
+                SetInitialData();
             }
         }
 
-        public string CustomerName
+        public void SetInitialData()
         {
-            set
+            try
             {
-                tbCustomerName.Text = value;
-            }
-        }
+                if (MainForm.Conn.State == ConnectionState.Closed)
+                    MainForm.Conn.Open();
+                string sqlCommand = @"
+                    SELECT * FROM BienNhan WHERE SoBienNhan=@id
+                ";
+                OleDbCommand command = new(sqlCommand, MainForm.Conn);
+                command.Parameters.AddWithValue("@id", tbCustomerId.Text);
 
-        public string CustomerAddress
-        {
-            set
-            {
-                tbCustomerAddress.Text = value;
-            }
-        }
+                OleDbDataReader reader = command.ExecuteReader();
 
-        public string CMND
-        {
-            set
-            {
-                tbCMND.Text = value;
-            }
-        }
-
-        public DateTime CreatedAt
-        {
-            set
-            {
-                dpCreatedAt.Value = value;
-            }
-        }
-
-        public int ProductType
-        {
-            set
-            {
-                cbProductType.SelectedIndex = value - 1;
-            }
-        }
-
-        public new string ProductName
-        {
-            set
-            {
-                tbProductName.Text = value;
-            }
-        }
-
-        public double ProductWeight
-        {
-            set
-            {
-                numProductWeight.Value = (decimal)value;
-            }
-        }
-
-        public double ProductPrice
-        {
-            set
-            {
-                numProductPrice.Value = (decimal)value;
-            }
-        }
-
-        public double ProductFund
-        {
-            set
-            {
-                numProductFund.Value = (decimal)value;
-            }
-        }
-
-        public double ProductRate
-        {
-            set
-            {
-                numProductRate.Value = (decimal)value;
-            }
-        }
-
-        public string Note
-        {
-            set
-            {
-                tbNote.Text = value;
-            }
-        }
-
-        public int CustomerStatus
-        {
-            set
-            {
-                tbCustomerStatus.Text = value switch
+                if (reader.Read() && reader.GetValue(0) != DBNull.Value)
                 {
-                    0 => "Đang cầm",
-                    1 => "Đã chuộc",
-                    2 => "Đã quá hạn",
-                    _ => "Không xác định"
-                };
+                    tbCustomerName.Text = reader.GetString(1);
+                    tbCustomerAddress.Text = reader.GetString(2);
+                    tbCMND.Text = reader.GetString(3);
+                    dpCreatedAt.Value = reader.GetDateTime(4);
+                    cbProductType.SelectedIndex = reader.GetInt32(5) - 1;
+                    tbProductName.Text = reader.GetString(6);
+                    numProductWeight.Value = reader.GetDecimal(7);
+                    numProductPrice.Value = reader.GetDecimal(8);
+                    numProductFund.Value = reader.GetDecimal(9);
+                    numProductRate.Value = reader.GetDecimal(10);
+                    tbNote.Text = reader.GetString(11);
+                    tbCustomerStatus.Text = reader.GetInt32(12) switch
+                    {
+                        0 => "Đang cầm",
+                        1 => "Đã chuộc",
+                        2 => "Đã quá hạn",
+                        _ => "Không xác định"
+                    };
+                    numRedeemRate.Value = reader.GetDecimal(10);
+
+                    if (reader.IsDBNull(14)) isFirst = true;
+                    if (reader.IsDBNull(17) && !isFirst) isSecond = true;
+                    if (reader.IsDBNull(20) && !isSecond && !isFirst) isThird = true;
+
+                    if (isFirst)
+                    {
+                        daysDiff = (short)dpCurrentRedeemDate.Value.Subtract(dpCreatedAt.Value).Days;
+                    }
+                    else if (isSecond)
+                    {
+                        first = reader.GetDateTime(13);
+                        daysDiff = (short)dpCurrentRedeemDate.Value.Subtract(first).Days;
+                    }
+                    else if (isThird)
+                    {
+                        second = reader.GetDateTime(16);
+                        daysDiff = (short)dpCurrentRedeemDate.Value.Subtract(second).Days;
+                    }
+
+                    monthsDiff = (short)(daysDiff / 30);
+                    dpRedeemDate.Value = dpCreatedAt.Value.AddDays(30 * monthsDiff);
+
+                    decimal rawValue = 0;
+
+                    if (monthsDiff >= 1)
+                    {
+                        rawValue = 30 * monthsDiff * numProductPrice.Value * (numProductRate.Value / 3000m);
+                    }
+                    else if (monthsDiff < 1)
+                    {
+                        rawValue = daysDiff * numProductPrice.Value * (numProductRate.Value / 3000m);
+                    }
+
+                    numRedeemPrice.Value = Math.Round(rawValue / 1000) * 1000;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -139,6 +121,9 @@ namespace QuanLyCamDo
 
             dpRedeemDate.Format = DateTimePickerFormat.Custom;
             dpRedeemDate.CustomFormat = "dd/MM/yyyy";
+
+            dpCurrentRedeemDate.Format = DateTimePickerFormat.Custom;
+            dpCurrentRedeemDate.CustomFormat = "dd/MM/yyyy";
         }
 
         private void DisableFields()

@@ -65,7 +65,7 @@ namespace QuanLyCamDo
         private void timer1_Tick(object sender, EventArgs e)
         {
             CultureInfo vn = CultureInfo.GetCultureInfo("vi-VN");
-            lbCurrentTime.Text = "Hôm nay, " + DateTime.Now.ToString("D", vn) + ". Vào lúc " + DateTime.Now.ToLongTimeString();
+            lbCurrentTime.Text = "Hôm nay, " + DateTime.Now.ToString("'ngày' dd 'tháng' MM', năm' yyyy", vn) + ". Vào lúc " + DateTime.Now.ToLongTimeString();
             CenterLocation();
         }
 

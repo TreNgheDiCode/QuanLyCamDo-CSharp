@@ -14,6 +14,22 @@ namespace QuanLyCamDo
         private readonly DataTable dataTable = new();
         private readonly Utility utility = new();
 
+        // Set value for form
+        public void SetFormValue(string customerName, string customerAddress, string cmnd, string productType, string productName, decimal productWeight, decimal productPrice, decimal productFund, decimal productRate, string note)
+        {
+            GetLatestCustomerId();
+            tbCustomerName.Text = customerName;
+            tbCustomerAddress.Text = customerAddress;
+            tbCMND.Text = cmnd;
+            cbProductType.Text = productType;
+            tbProductName.Text = productName;
+            numProductWeight.Value = productWeight;
+            numProductPrice.Value = productPrice;
+            numProductFund.Value = productFund;
+            numProductRate.Value = productRate;
+            tbNote.Text = note;
+        }
+
         public AddCustomerForm()
         {
             InitializeComponent();
@@ -30,7 +46,6 @@ namespace QuanLyCamDo
         {
             if (!ValidateData()) return;
             ThemBienNhan();
-            btnSave.Enabled = false;
         }
         private void lbBtnSave_KeyDown(object sender, KeyEventArgs e)
         {
@@ -85,6 +100,7 @@ namespace QuanLyCamDo
 
             return true;
         }
+      
         private void ThemBienNhan()
         {
             try
@@ -178,6 +194,7 @@ namespace QuanLyCamDo
                     }
 
                     reader.Close();
+                    btnSave.Enabled = false;
                 }
                 else
                 {
@@ -198,6 +215,7 @@ namespace QuanLyCamDo
                 MainForm.Conn.Open();
                 string sqlCommand = @"
                     SELECT TOP 1 SoBienNhan FROM BienNhan
+                    WHERE MONTH(NgayCam) = MONTH(Date())
                     ORDER BY SoBienNhan DESC
                 ";
 
@@ -205,10 +223,10 @@ namespace QuanLyCamDo
 
                 OleDbDataReader reader = command.ExecuteReader();
 
+                string[] arrDate = DateTime.Now.ToShortDateString().Split("/");
+                string prefix = arrDate[0].PadLeft(2, '0') + arrDate[2][2..];
                 if (!reader.HasRows)
                 {
-                    string[] arrDate = DateTime.Now.ToShortDateString().Split("/");
-                    string prefix = arrDate[0].PadLeft(2, '0') + arrDate[2][2..];
                     tbCustomerId.Text = prefix + ".0001";
                 }
 
@@ -216,7 +234,7 @@ namespace QuanLyCamDo
                 {
                     string[] customerIdPattern = reader.GetString(0).Split(".");
                     int incrementValue = Convert.ToInt16(customerIdPattern[1]) + 1;
-                    tbCustomerId.Text = customerIdPattern[0] + "." + incrementValue.ToString().PadLeft(4, '0');
+                    tbCustomerId.Text = prefix + "." + incrementValue.ToString().PadLeft(4, '0');
                     break;
                 }
 

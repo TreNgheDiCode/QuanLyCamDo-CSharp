@@ -73,11 +73,15 @@
             label9 = new Label();
             label10 = new Label();
             tbCustomerStatus = new TextBox();
-            label11 = new Label();
-            tbRedeemNote = new TextBox();
-            btnPrint = new Button();
             btnClose = new Button();
             btnSave = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            label11 = new Label();
+            dpCurrentRedeemDate = new DateTimePicker();
+            label12 = new Label();
+            flowLayoutPanel7 = new FlowLayoutPanel();
+            numRedeemRate = new NumericUpDown();
+            label13 = new Label();
             tbAddCustomer.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numProductWeight).BeginInit();
@@ -91,6 +95,9 @@
             ((System.ComponentModel.ISupportInitialize)numRedeemPrice).BeginInit();
             flowLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numRedeemTotal).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numRedeemRate).BeginInit();
             SuspendLayout();
             // 
             // tbAddCustomer
@@ -127,7 +134,7 @@
             tbAddCustomer.Controls.Add(lbProductRate, 3, 4);
             tbAddCustomer.Controls.Add(flowLayoutPanel3, 4, 3);
             tbAddCustomer.Controls.Add(flowLayoutPanel2, 4, 2);
-            tbAddCustomer.Location = new Point(4, 12);
+            tbAddCustomer.Location = new Point(7, 12);
             tbAddCustomer.Name = "tbAddCustomer";
             tbAddCustomer.RowCount = 6;
             tbAddCustomer.RowStyles.Add(new RowStyle());
@@ -153,6 +160,7 @@
             // 
             // tbCustomerId
             // 
+            tbCustomerId.Anchor = AnchorStyles.Left;
             tbCustomerId.Location = new Point(139, 3);
             tbCustomerId.Name = "tbCustomerId";
             tbCustomerId.Size = new Size(260, 27);
@@ -173,7 +181,8 @@
             // 
             // tbCustomerName
             // 
-            tbCustomerName.Location = new Point(139, 36);
+            tbCustomerName.Anchor = AnchorStyles.Left;
+            tbCustomerName.Location = new Point(139, 39);
             tbCustomerName.Name = "tbCustomerName";
             tbCustomerName.Size = new Size(260, 27);
             tbCustomerName.TabIndex = 3;
@@ -199,6 +208,7 @@
             // 
             // cbProductType
             // 
+            cbProductType.Anchor = AnchorStyles.Left;
             cbProductType.AutoCompleteMode = AutoCompleteMode.Suggest;
             cbProductType.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbProductType.FormattingEnabled = true;
@@ -233,7 +243,8 @@
             // 
             // tbCustomerAddress
             // 
-            tbCustomerAddress.Location = new Point(139, 75);
+            tbCustomerAddress.Anchor = AnchorStyles.Left;
+            tbCustomerAddress.Location = new Point(139, 78);
             tbCustomerAddress.Name = "tbCustomerAddress";
             tbCustomerAddress.Size = new Size(260, 27);
             tbCustomerAddress.TabIndex = 5;
@@ -273,13 +284,15 @@
             // 
             // tbCMND
             // 
-            tbCMND.Location = new Point(139, 114);
+            tbCMND.Anchor = AnchorStyles.Left;
+            tbCMND.Location = new Point(139, 117);
             tbCMND.Name = "tbCMND";
             tbCMND.Size = new Size(260, 27);
             tbCMND.TabIndex = 7;
             // 
             // tbProductName
             // 
+            tbProductName.Anchor = AnchorStyles.Left;
             tbProductName.Location = new Point(564, 3);
             tbProductName.Name = "tbProductName";
             tbProductName.Size = new Size(260, 27);
@@ -472,7 +485,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 163);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(4, 287);
+            label5.Location = new Point(3, 6);
             label5.Name = "label5";
             label5.Size = new Size(121, 21);
             label5.TabIndex = 27;
@@ -481,9 +494,9 @@
             // dpRedeemDate
             // 
             dpRedeemDate.Anchor = AnchorStyles.Left;
-            dpRedeemDate.Location = new Point(167, 287);
+            dpRedeemDate.Location = new Point(150, 3);
             dpRedeemDate.Name = "dpRedeemDate";
-            dpRedeemDate.Size = new Size(260, 27);
+            dpRedeemDate.Size = new Size(200, 27);
             dpRedeemDate.TabIndex = 27;
             // 
             // label6
@@ -492,21 +505,22 @@
             label6.AutoSize = true;
             label6.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(4, 326);
+            label6.Location = new Point(3, 81);
             label6.Name = "label6";
-            label6.Size = new Size(113, 21);
+            label6.Size = new Size(137, 21);
             label6.TabIndex = 27;
-            label6.Text = "Tiền chuộc*";
+            label6.Text = "Tiền lời chuộc*";
             // 
             // flowLayoutPanel5
             // 
+            flowLayoutPanel5.Anchor = AnchorStyles.Left;
             flowLayoutPanel5.AutoSize = true;
             flowLayoutPanel5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel5.Controls.Add(numRedeemPrice);
             flowLayoutPanel5.Controls.Add(label7);
-            flowLayoutPanel5.Location = new Point(167, 320);
+            flowLayoutPanel5.Location = new Point(150, 75);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new Size(313, 33);
+            flowLayoutPanel5.Size = new Size(266, 33);
             flowLayoutPanel5.TabIndex = 30;
             // 
             // numRedeemPrice
@@ -516,7 +530,7 @@
             numRedeemPrice.Location = new Point(3, 3);
             numRedeemPrice.Maximum = new decimal(new int[] { 1410065408, 2, 0, 0 });
             numRedeemPrice.Name = "numRedeemPrice";
-            numRedeemPrice.Size = new Size(257, 27);
+            numRedeemPrice.Size = new Size(210, 27);
             numRedeemPrice.TabIndex = 0;
             numRedeemPrice.ThousandsSeparator = true;
             numRedeemPrice.Value = new decimal(new int[] { 100000, 0, 0, 0 });
@@ -525,7 +539,7 @@
             // 
             label7.Anchor = AnchorStyles.Left;
             label7.AutoSize = true;
-            label7.Location = new Point(266, 6);
+            label7.Location = new Point(219, 6);
             label7.Name = "label7";
             label7.Size = new Size(44, 20);
             label7.TabIndex = 1;
@@ -536,9 +550,9 @@
             flowLayoutPanel6.AutoSize = true;
             flowLayoutPanel6.Controls.Add(numRedeemTotal);
             flowLayoutPanel6.Controls.Add(label8);
-            flowLayoutPanel6.Location = new Point(167, 359);
+            flowLayoutPanel6.Location = new Point(636, 75);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            flowLayoutPanel6.Size = new Size(313, 33);
+            flowLayoutPanel6.Size = new Size(266, 33);
             flowLayoutPanel6.TabIndex = 32;
             // 
             // numRedeemTotal
@@ -548,7 +562,7 @@
             numRedeemTotal.Location = new Point(3, 3);
             numRedeemTotal.Maximum = new decimal(new int[] { 1410065408, 2, 0, 0 });
             numRedeemTotal.Name = "numRedeemTotal";
-            numRedeemTotal.Size = new Size(257, 27);
+            numRedeemTotal.Size = new Size(210, 27);
             numRedeemTotal.TabIndex = 0;
             numRedeemTotal.ThousandsSeparator = true;
             numRedeemTotal.Value = new decimal(new int[] { 100000, 0, 0, 0 });
@@ -557,7 +571,7 @@
             // 
             label8.Anchor = AnchorStyles.Left;
             label8.AutoSize = true;
-            label8.Location = new Point(266, 6);
+            label8.Location = new Point(219, 6);
             label8.Name = "label8";
             label8.Size = new Size(44, 20);
             label8.TabIndex = 1;
@@ -569,7 +583,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(4, 365);
+            label9.Location = new Point(473, 81);
             label9.Name = "label9";
             label9.Size = new Size(157, 21);
             label9.TabIndex = 31;
@@ -581,7 +595,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 163);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(465, 291);
+            label10.Location = new Point(473, 42);
             label10.Name = "label10";
             label10.Size = new Size(97, 21);
             label10.TabIndex = 33;
@@ -589,41 +603,11 @@
             // 
             // tbCustomerStatus
             // 
-            tbCustomerStatus.Location = new Point(568, 287);
+            tbCustomerStatus.Anchor = AnchorStyles.Left;
+            tbCustomerStatus.Location = new Point(636, 39);
             tbCustomerStatus.Name = "tbCustomerStatus";
-            tbCustomerStatus.Size = new Size(260, 27);
+            tbCustomerStatus.Size = new Size(230, 27);
             tbCustomerStatus.TabIndex = 34;
-            // 
-            // label11
-            // 
-            label11.Anchor = AnchorStyles.Left;
-            label11.AutoSize = true;
-            label11.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(568, 324);
-            label11.Name = "label11";
-            label11.Size = new Size(161, 21);
-            label11.TabIndex = 35;
-            label11.Text = "Ghi chú chỉnh sửa";
-            // 
-            // tbRedeemNote
-            // 
-            tbRedeemNote.Location = new Point(568, 358);
-            tbRedeemNote.Name = "tbRedeemNote";
-            tbRedeemNote.Size = new Size(260, 27);
-            tbRedeemNote.TabIndex = 36;
-            // 
-            // btnPrint
-            // 
-            btnPrint.BackColor = Color.White;
-            btnPrint.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrint.ForeColor = Color.Black;
-            btnPrint.Location = new Point(246, 412);
-            btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(140, 40);
-            btnPrint.TabIndex = 39;
-            btnPrint.Text = "In BN (F3)";
-            btnPrint.UseVisualStyleBackColor = false;
             // 
             // btnClose
             // 
@@ -631,7 +615,7 @@
             btnClose.BackColor = Color.White;
             btnClose.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.Black;
-            btnClose.Location = new Point(538, 412);
+            btnClose.Location = new Point(447, 412);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(140, 40);
             btnClose.TabIndex = 37;
@@ -644,12 +628,103 @@
             btnSave.BackColor = Color.White;
             btnSave.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(392, 412);
+            btnSave.Location = new Point(301, 412);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(140, 40);
             btnSave.TabIndex = 38;
-            btnSave.Text = "Lưu (F2)";
+            btnSave.Text = "Chuộc (F2)";
             btnSave.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.ColumnCount = 5;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.Controls.Add(label5, 0, 0);
+            tableLayoutPanel1.Controls.Add(dpRedeemDate, 1, 0);
+            tableLayoutPanel1.Controls.Add(flowLayoutPanel5, 1, 2);
+            tableLayoutPanel1.Controls.Add(flowLayoutPanel6, 4, 2);
+            tableLayoutPanel1.Controls.Add(label9, 3, 2);
+            tableLayoutPanel1.Controls.Add(label6, 0, 2);
+            tableLayoutPanel1.Controls.Add(label10, 3, 1);
+            tableLayoutPanel1.Controls.Add(tbCustomerStatus, 4, 1);
+            tableLayoutPanel1.Controls.Add(label11, 3, 0);
+            tableLayoutPanel1.Controls.Add(dpCurrentRedeemDate, 4, 0);
+            tableLayoutPanel1.Controls.Add(label12, 0, 1);
+            tableLayoutPanel1.Controls.Add(flowLayoutPanel7, 1, 1);
+            tableLayoutPanel1.Location = new Point(7, 271);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(905, 111);
+            tableLayoutPanel1.TabIndex = 40;
+            // 
+            // label11
+            // 
+            label11.Anchor = AnchorStyles.Left;
+            label11.AutoSize = true;
+            label11.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            label11.ForeColor = Color.Black;
+            label11.Location = new Point(473, 6);
+            label11.Name = "label11";
+            label11.Size = new Size(152, 21);
+            label11.TabIndex = 35;
+            label11.Text = "Ngày GD chuộc*";
+            // 
+            // dpCurrentRedeemDate
+            // 
+            dpCurrentRedeemDate.Anchor = AnchorStyles.Left;
+            dpCurrentRedeemDate.Enabled = false;
+            dpCurrentRedeemDate.Location = new Point(636, 3);
+            dpCurrentRedeemDate.Name = "dpCurrentRedeemDate";
+            dpCurrentRedeemDate.Size = new Size(200, 27);
+            dpCurrentRedeemDate.TabIndex = 36;
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.Left;
+            label12.AutoSize = true;
+            label12.Font = new Font("Inter", 10.7999992F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.Black;
+            label12.Location = new Point(3, 42);
+            label12.Name = "label12";
+            label12.Size = new Size(141, 21);
+            label12.TabIndex = 37;
+            label12.Text = "Lãi suất chuộc*";
+            // 
+            // flowLayoutPanel7
+            // 
+            flowLayoutPanel7.AutoSize = true;
+            flowLayoutPanel7.Controls.Add(numRedeemRate);
+            flowLayoutPanel7.Controls.Add(label13);
+            flowLayoutPanel7.Location = new Point(150, 36);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            flowLayoutPanel7.Size = new Size(287, 33);
+            flowLayoutPanel7.TabIndex = 38;
+            // 
+            // numRedeemRate
+            // 
+            numRedeemRate.Location = new Point(3, 3);
+            numRedeemRate.Name = "numRedeemRate";
+            numRedeemRate.Size = new Size(210, 27);
+            numRedeemRate.TabIndex = 0;
+            // 
+            // label13
+            // 
+            label13.Anchor = AnchorStyles.Left;
+            label13.AutoSize = true;
+            label13.Location = new Point(219, 6);
+            label13.Name = "label13";
+            label13.Size = new Size(65, 20);
+            label13.TabIndex = 1;
+            label13.Text = "%/tháng";
             // 
             // CustomerRedeemForm
             // 
@@ -657,19 +732,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 255, 187);
             ClientSize = new Size(913, 463);
-            Controls.Add(btnPrint);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(btnClose);
             Controls.Add(btnSave);
-            Controls.Add(tbRedeemNote);
-            Controls.Add(label11);
-            Controls.Add(tbCustomerStatus);
-            Controls.Add(label10);
-            Controls.Add(flowLayoutPanel5);
-            Controls.Add(label6);
-            Controls.Add(flowLayoutPanel6);
-            Controls.Add(dpRedeemDate);
-            Controls.Add(label9);
-            Controls.Add(label5);
             Controls.Add(tbAddCustomer);
             Name = "CustomerRedeemForm";
             Text = "Khách hàng chuộc đồ";
@@ -693,6 +758,11 @@
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numRedeemTotal).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numRedeemRate).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -744,10 +814,14 @@
         private Label label9;
         private Label label10;
         private TextBox tbCustomerStatus;
-        private Label label11;
-        private TextBox tbRedeemNote;
-        private Button btnPrint;
         private Button btnClose;
         private Button btnSave;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label11;
+        private DateTimePicker dpCurrentRedeemDate;
+        private Label label12;
+        private FlowLayoutPanel flowLayoutPanel7;
+        private NumericUpDown numRedeemRate;
+        private Label label13;
     }
 }

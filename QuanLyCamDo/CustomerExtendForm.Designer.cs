@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tbAddCustomer = new TableLayoutPanel();
             lbCustomerId = new Label();
             tbCustomerId = new TextBox();
@@ -70,12 +71,15 @@
             btnClose = new Button();
             btnSave = new Button();
             label8 = new Label();
-            listBox1 = new ListBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             tbCustomerStatus = new TextBox();
             dpCurrentExtendDate = new DateTimePicker();
             label10 = new Label();
             label9 = new Label();
+            lsHistory = new DataGridView();
+            utilityBindingSource = new BindingSource(components);
+            btnNew = new Button();
+            btnRedeem = new Button();
             tbAddCustomer.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numProductWeight).BeginInit();
@@ -88,6 +92,8 @@
             flowLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numExtendPrice).BeginInit();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)lsHistory).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)utilityBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tbAddCustomer
@@ -491,6 +497,7 @@
             // dpActualExtendDate
             // 
             dpActualExtendDate.Anchor = AnchorStyles.Left;
+            dpActualExtendDate.Enabled = false;
             dpActualExtendDate.Location = new Point(155, 6);
             dpActualExtendDate.Name = "dpActualExtendDate";
             dpActualExtendDate.Size = new Size(260, 27);
@@ -564,8 +571,9 @@
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(140, 40);
             btnSave.TabIndex = 30;
-            btnSave.Text = "Lưu (F2)";
+            btnSave.Text = "Gia hạn (F2)";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // label8
             // 
@@ -577,14 +585,6 @@
             label8.Size = new Size(255, 30);
             label8.TabIndex = 32;
             label8.Text = "LỊCH SỬ GIAO DỊCH";
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(84, 448);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(742, 164);
-            listBox1.TabIndex = 33;
             // 
             // tableLayoutPanel1
             // 
@@ -657,14 +657,58 @@
             label9.TabIndex = 35;
             label9.Text = "Ngày GD GH*";
             // 
+            // lsHistory
+            // 
+            lsHistory.AllowUserToDeleteRows = false;
+            lsHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            lsHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            lsHistory.Location = new Point(84, 448);
+            lsHistory.Name = "lsHistory";
+            lsHistory.RowHeadersWidth = 51;
+            lsHistory.Size = new Size(745, 168);
+            lsHistory.TabIndex = 35;
+            // 
+            // utilityBindingSource
+            // 
+            utilityBindingSource.DataSource = typeof(Utility);
+            // 
+            // btnNew
+            // 
+            btnNew.BackColor = Color.White;
+            btnNew.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNew.ForeColor = Color.Black;
+            btnNew.Location = new Point(302, 360);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(140, 40);
+            btnNew.TabIndex = 36;
+            btnNew.Text = "Tạo mới (F2)";
+            btnNew.UseVisualStyleBackColor = false;
+            btnNew.Visible = false;
+            btnNew.Click += btnNew_Click;
+            // 
+            // btnRedeem
+            // 
+            btnRedeem.BackColor = Color.White;
+            btnRedeem.Font = new Font("Inter", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRedeem.ForeColor = Color.Black;
+            btnRedeem.Location = new Point(594, 360);
+            btnRedeem.Name = "btnRedeem";
+            btnRedeem.Size = new Size(140, 40);
+            btnRedeem.TabIndex = 37;
+            btnRedeem.Text = "Chuộc (F6)";
+            btnRedeem.UseVisualStyleBackColor = false;
+            btnRedeem.Visible = false;
+            // 
             // CustomerExtendForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 255, 187);
             ClientSize = new Size(913, 628);
+            Controls.Add(btnRedeem);
+            Controls.Add(btnNew);
+            Controls.Add(lsHistory);
             Controls.Add(tableLayoutPanel1);
-            Controls.Add(listBox1);
             Controls.Add(label8);
             Controls.Add(btnClose);
             Controls.Add(btnSave);
@@ -690,6 +734,8 @@
             ((System.ComponentModel.ISupportInitialize)numExtendPrice).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)lsHistory).EndInit();
+            ((System.ComponentModel.ISupportInitialize)utilityBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -738,11 +784,14 @@
         private Button btnClose;
         private Button btnSave;
         private Label label8;
-        private ListBox listBox1;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label9;
         private Label label10;
         private DateTimePicker dpCurrentExtendDate;
         private TextBox tbCustomerStatus;
+        private DataGridView lsHistory;
+        private BindingSource utilityBindingSource;
+        private Button btnNew;
+        private Button btnRedeem;
     }
 }
